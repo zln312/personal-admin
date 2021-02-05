@@ -1,23 +1,23 @@
 <!--
  * @Author: your name
- * @Date: 2021-02-05 22:05:35
- * @LastEditTime: 2021-02-05 22:44:44
+ * @Date: 2021-02-05 22:21:30
+ * @LastEditTime: 2021-02-05 22:40:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: \personal-admin\src\App.vue
+ * @FilePath: \personal-admin\src\layout\layout.vue
 -->
 <template>
-  <div id="app">
-    <router-view></router-view>
+  <div>
+    layout
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
+  name:'layout'
 }
 </script>
 
 <style>
+
 </style>
