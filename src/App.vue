@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-05 22:05:35
- * @LastEditTime: 2021-02-05 22:44:44
+ * @LastEditTime: 2021-02-06 23:30:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\App.vue
@@ -19,5 +19,6 @@ export default {
 }
 </script>
 
-<style>
+<style scope>
+ *{ margin:0; padding:0; }
 </style>
