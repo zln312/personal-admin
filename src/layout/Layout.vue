@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-05 22:21:30
- * @LastEditTime: 2021-02-06 23:18:15
+ * @LastEditTime: 2021-02-07 20:03:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\layout\layout.vue
@@ -14,6 +14,7 @@
       </el-col>
       <el-col :span="20">
         <breadcrumb></breadcrumb>
+        <router-view></router-view>
       </el-col>
     </el-row>
   </div>

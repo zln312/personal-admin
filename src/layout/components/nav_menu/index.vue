@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-06 22:17:06
- * @LastEditTime: 2021-02-07 19:34:13
+ * @LastEditTime: 2021-02-07 20:08:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\layout\components\nav_menu\index.vue
@@ -12,6 +12,7 @@
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
+      router
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b">
@@ -28,7 +29,7 @@
           <el-menu-item index="1-4-1">选项1</el-menu-item>
         </el-submenu>
       </el-submenu>
-      <el-menu-item index="2">
+      <el-menu-item index="edit">
         <i class="el-icon-menu"></i>
         <span slot="title">导航二</span>
       </el-menu-item>
@@ -52,6 +53,9 @@ export default {
     handleClose(key, keyPath) {
       console.log(key, keyPath);
     },
+    edit(){
+      console.log('edit');
+    }
   },
 };
 </script>
