@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-07 20:00:16
- * @LastEditTime: 2021-02-07 23:23:54
+ * @LastEditTime: 2021-02-08 12:13:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\views\edit.vue
@@ -11,13 +11,6 @@
 <quill-editor
     ref="myQuillEditor"
     v-model="content"
-    :options="editorOption"
-    @blur="onEditorBlur($event)"
-    @focus="onEditorFocus($event)"
-    @ready="onEditorReady($event)"
-  />
-  <quill-editor
-    :content="content"
     :options="editorOption"
     @change="onEditorChange($event)"
   />
@@ -43,18 +36,10 @@ export default {
     }
   },
   methods:{
-    onEditorBlur(quill) {
-      console.log('editor blur!',quill);
-    },
-    onEditorFocus(quill){
-      console.log('editor focus!', quill);
-    },
-    onEditorReady(quill){
-      console.log('editor ready', quill);
-    },
-    onEditorChange({quill,html,text}){
-      console.log('editor change!',quill,html,text);
+    onEditorChange({html}){
       this.content = html
+      console.log('editor change!', html );
+
     }
   },
   computed: {
