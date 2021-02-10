@@ -1,14 +1,14 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-06 22:17:06
- * @LastEditTime: 2021-02-09 23:56:13
+ * @LastEditTime: 2021-02-10 14:29:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\layout\components\nav_menu\index.vue
 -->
 <template>
   <el-menu
-    default-active="2"
+    default-active="1-3"
     class="el-menu-vertical-demo"
     @open="handleOpen"
     @close="handleClose"
@@ -26,19 +26,24 @@
 <script>
 import MenuNode from "./MenuNode";
 export default {
-  components:{
-    MenuNode 
+  components: {
+    MenuNode,
   },
   data() {
     return {
       data: [
         {
-          title: { name: "我的文章1", icon: "el-icon-setting", index: "1-1" },
+          title: { name: "首页", icon: "el-icon-s-home", index: "/" },
           items: [],
         },
         {
-          title: { name: "编辑文章2", icon: "el-icon-menu", index: "1-2" },
-          items: [],
+          title: { name: "文章管理", icon: "el-icon-menu", index: "edit" },
+          items: [
+            {
+              title: { name: "文章列表", icon: "", index: "articleList" },
+              items: [],
+            },
+          ],
         },
         {
           title: { name: "编辑文章4", icon: "el-icon-menu", index: "1-3" },
