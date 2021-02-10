@@ -1,15 +1,15 @@
 /*
  * @Author: your name
  * @Date: 2021-02-05 22:26:46
- * @LastEditTime: 2021-02-10 14:28:48
+ * @LastEditTime: 2021-02-10 14:51:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\router\routes.js
  */
 
-import layout from "../layout/Layout.vue";
-import edit from "../views/edit.vue";
-import articleList from "../views/articleList.vue"
+const layout = ()=> import("../layout/Layout.vue")
+const edit = () => import("../views/edit.vue")
+const articleList = () => import("../views/articleList.vue")
 const routes = [
   {
     path: "/",
