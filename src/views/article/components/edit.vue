@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-07 20:00:16
- * @LastEditTime: 2021-02-08 12:13:04
+ * @LastEditTime: 2021-02-16 22:06:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\views\edit.vue
@@ -24,32 +24,37 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import {quillEditor} from 'vue-quill-editor'
 export default {
+  props:{
+    data:String
+  },
   components:{
     quillEditor
   },
   data(){
     return {
-      content: '<h2>I am Example</h2>',
+      content: this.data,
       editorOption: {
-
       }
+    }
+  },
+  watch:{
+    data(val){
+      this.content = val
     }
   },
   methods:{
     onEditorChange({html}){
       this.content = html
+      this.$emit('updateVal',html)
       console.log('editor change!', html );
-
     }
   },
   computed: {
     editor() {
       return this.$refs.myQuillEditor.quill
-    }
+    },
   },
-  mounted(){
-    console.log('this is current quill instance object',this.editor);
-  }
+
 
 }
 </script>

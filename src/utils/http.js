@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-03 23:05:30
- * @LastEditTime: 2021-02-05 18:39:05
+ * @LastEditTime: 2021-02-16 23:22:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal\src\utils\http.js
@@ -78,7 +78,7 @@ function del(url, param) {
     axios
       .delete(url, param)
       .then((res) => {
-        if (res.code === 200) {
+        if (res.data.code === 200) {
           resolve(res.data);
         } else {
           reject(res.data);
