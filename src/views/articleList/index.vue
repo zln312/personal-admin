@@ -1,15 +1,26 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-10 14:25:57
- * @LastEditTime: 2021-02-16 23:21:26
+ * @LastEditTime: 2021-02-19 00:07:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\views\articleList.vue
 -->
 <template>
   <div>
-    <el-button type="primary" size="small" icon="el-icon-document-add" @click="add">新建</el-button>
-    <article-table :list="list" @show="show" @edit="edit" @del="del"></article-table>
+    <el-button
+      type="primary"
+      size="small"
+      icon="el-icon-document-add"
+      @click="add"
+      >新建</el-button
+    >
+    <article-table
+      :list="list"
+      @show="show"
+      @edit="edit"
+      @del="del"
+    ></article-table>
     <pagination
       @page-change="pageChange"
       :pageSize="pageSize"
@@ -22,6 +33,7 @@
 <script>
 import articleTable from "./components/table";
 import pagination from "./components/pagination";
+import message from "../../utils/message";
 export default {
   name: "articleList",
   components: {
@@ -42,6 +54,11 @@ export default {
       this.currentPage = res.pageNum;
     });
   },
+  computed:{
+    delCurrentPage(){
+      return this.totalSize%this.pageSize==1?this.currentPage-1:this.currentPage;
+    }
+  },
   mounted() {},
   methods: {
     getArticleList(size, num) {
@@ -57,6 +74,7 @@ export default {
 
     pageChange(e) {
       this.getArticleList(this.pageSize, e);
+      this.currentPage=e;
     },
 
     show(e) {
@@ -65,15 +83,21 @@ export default {
     edit(e) {
       this.$router.push(`/article/${e}/edit`);
     },
-    add(){
-      this.$router.push('/article/new/add')
+    add() {
+      this.$router.push("/article/new/add");
     },
-    del(e){
-        console.log(e);
-      this.$http.del(this.$api.getArticleById(e)).then(res=>{
-        console.log(res);
-      })
-    }
+    del(e) {
+      const f = () => {
+        this.$http.del(this.$api.getArticleById(e)).then((res) => {
+          this.getArticleList(this.pageSize,this.delCurrentPage).then((res) => {
+            this.totalSize = res.totalSize;
+            this.currentPage = res.pageNum;
+          });
+          console.log(res);
+        });
+      };
+      message(this, "删除", f);
+    },
   },
 };
 </script>

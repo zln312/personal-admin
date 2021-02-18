@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-15 14:20:49
- * @LastEditTime: 2021-02-16 23:07:17
+ * @LastEditTime: 2021-02-19 00:47:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\views\articleList\table.vue
@@ -16,9 +16,15 @@
     <el-table-column prop="title" label="标题" width="300"> </el-table-column>
     <el-table-column prop="tag" label="标签" width="180"> </el-table-column>
     <el-table-column prop="intro" label="简介" width="300"> </el-table-column>
-    <el-table-column prop="createTime" label="创建时间" width="100">
+    <el-table-column  label="创建时间" width="100">
+      <template slot-scope="scope">
+        {{  scope.row.createTime | formatDate}}
+      </template>
     </el-table-column>
-    <el-table-column prop="updateTime" label="修改时间" width="100">
+    <el-table-column label="修改时间" width="100">
+        <template slot-scope="scope">
+        {{  scope.row.updateTime | formatDate}}
+      </template>
     </el-table-column>
 
     <el-table-column label="操作" width="300">
@@ -38,6 +44,7 @@
 </template>
 
 <script>
+// import formatDate from '../../../utils/utils'
 export default {
   name: "articleTable",
   props: ["list"],
@@ -52,6 +59,15 @@ export default {
       this.$emit("del",e)
     }
   },
+  filters:{
+    formatDate(val){
+        const now = new Date(val),
+        y = now.getFullYear(),
+        m = now.getMonth() + 1,
+        d = now.getDate();
+        return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
+    }
+  }
 };
 </script>
 

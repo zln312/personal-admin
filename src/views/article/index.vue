@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-15 21:09:07
- * @LastEditTime: 2021-02-16 22:58:08
+ * @LastEditTime: 2021-02-19 00:09:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\views\edit\index.vue
@@ -99,10 +99,12 @@ export default {
       if (this.type === "edit") {
         this.$http.put(this.$api.pushArticle, this.data).then((res) => {
           console.log(res);
+          this.$router.push('/articleList')
         });
       }else{
         this.$http.post(this.$api.pushArticle, this.data).then((res) => {
           console.log(res);
+          this.$router.push('/articleList')
         });
       }
     },
