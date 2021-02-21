@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-06 22:17:00
- * @LastEditTime: 2021-02-21 22:12:42
+ * @LastEditTime: 2021-02-21 22:52:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\layout\components\breadcrumb\index.vue
@@ -14,7 +14,7 @@
       <el-breadcrumb-item>活动列表</el-breadcrumb-item>
       <el-breadcrumb-item>活动详情</el-breadcrumb-item>
     </el-breadcrumb>
-    <el-button @click="exit">退出登陆</el-button>
+    <el-button type="warning" class="exit_btn" @click="exit">退出登陆</el-button>
   </div>
 </template>
 
@@ -33,5 +33,10 @@ export default {
 .container{
   background-color:darkgray;
   padding: 20px;
+}
+.exit_btn{
+  position: absolute;
+  right: 30px;
+  top:7px;
 }
 </style>
