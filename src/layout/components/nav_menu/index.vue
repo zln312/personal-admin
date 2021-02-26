@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-06 22:17:06
- * @LastEditTime: 2021-02-16 23:12:09
+ * @LastEditTime: 2021-02-25 22:44:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\layout\components\nav_menu\index.vue
@@ -41,6 +41,10 @@ export default {
           items: [
             {
               title: { name: "文章列表", icon: "", index: "/articleList" },
+              items: [],
+            },
+             {
+              title: { name: "标签列表", icon: "", index: "/tag" },
               items: [],
             },
           ],

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-03 23:25:18
- * @LastEditTime: 2021-02-05 18:37:38
+ * @LastEditTime: 2021-02-26 19:23:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal\src\utils\api.js
@@ -21,9 +21,18 @@
  const getArticleByTag = '/article/tag/{id}'
  const pushArticle = '/article'
 
+ const getTagList = '/tag'
+ function tagHandleById(id){
+   return `/tag/${id}`
+ }
+ const pushTag = "/tag"
+
 export default {
   getArticleList,
   getArticleById,
   getArticleByTag,
-  pushArticle
+  pushArticle,
+  getTagList,
+  tagHandleById,
+  pushTag
 }

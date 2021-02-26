@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-15 14:20:49
- * @LastEditTime: 2021-02-19 00:47:59
+ * @LastEditTime: 2021-02-24 21:35:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\views\articleList\table.vue
@@ -14,7 +14,7 @@
       </template>
     </el-table-column>
     <el-table-column prop="title" label="标题" width="300"> </el-table-column>
-    <el-table-column prop="tag" label="标签" width="180"> </el-table-column>
+    <el-table-column prop="tagName" label="标签" width="180"> </el-table-column>
     <el-table-column prop="intro" label="简介" width="300"> </el-table-column>
     <el-table-column  label="创建时间" width="100">
       <template slot-scope="scope">
