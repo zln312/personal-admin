@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-15 21:09:07
- * @LastEditTime: 2021-02-19 00:09:28
+ * @LastEditTime: 2021-02-27 23:08:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\views\edit\index.vue
@@ -14,7 +14,11 @@
     </div>
     <div>
       分类：
-      <el-input type="text" size="medium" v-model="data.tag"></el-input>
+      <el-checkbox-group v-model="checkboxGroup1" size="small" @change="checkChange">
+        <span v-for="item in tags" :key="item.id">
+          <el-checkbox  :label="item.id" border>{{item.name}}</el-checkbox>
+        </span>
+      </el-checkbox-group>
     </div>
     <div>
       简介：
@@ -46,14 +50,22 @@ export default {
       type: "",
       content: "",
       input: "",
+      checkboxGroup1: [],
+      tags: [],
       data: {
         cover: "",
         content: "",
         title: "",
         intro: "",
-        tag: "",
+        tagIds: [],
       },
     };
+  },
+  created() {
+    this.$http.get(this.$api.getTagList).then((res) => {
+      this.tags = res.data;
+      console.log(res.data);
+    });
   },
   mounted() {
     const id = this.$route.params.id;
@@ -67,6 +79,9 @@ export default {
     this.$http.get(this.$api.getArticleById(id)).then((res) => {
       console.log(res.data);
       this.data = res.data;
+      if(res.data.tagIds){
+      this.checkboxGroup1 = res.data.tagIds
+      }
     });
   },
 
@@ -97,17 +112,22 @@ export default {
     submit() {
       console.log(this.data);
       if (this.type === "edit") {
+        console.log("提交的参数",this.data);
         this.$http.put(this.$api.pushArticle, this.data).then((res) => {
           console.log(res);
-          this.$router.push('/articleList')
+          this.$router.push("/articleList");
         });
-      }else{
+      } else {
         this.$http.post(this.$api.pushArticle, this.data).then((res) => {
           console.log(res);
-          this.$router.push('/articleList')
+          this.$router.push("/articleList");
         });
       }
     },
+    checkChange(e){
+      console.log(e);
+      this.data.tagIds=e;
+    }
   },
 };
 </script>
