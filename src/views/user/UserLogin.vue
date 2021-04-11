@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-21 21:42:47
- * @LastEditTime: 2021-02-21 22:44:59
+ * @LastEditTime: 2021-04-11 19:34:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\views\user\Login.vue
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     login() {
-      if (this.username == "zln" && this.password == "znn714323486") {
+      if (this.username == "admin" && this.password == "123456") {
         localStorage.setItem("isLogin", "ok");
         this.$router.replace("/");
       } else {
