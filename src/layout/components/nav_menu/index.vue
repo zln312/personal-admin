@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-06 22:17:06
- * @LastEditTime: 2021-02-25 22:44:54
+ * @LastEditTime: 2021-04-11 18:57:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\layout\components\nav_menu\index.vue
@@ -12,6 +12,7 @@
     class="el-menu-vertical-demo"
     @open="handleOpen"
     @close="handleClose"
+    @select="handleSelect"
     router
     background-color="#545c64"
     text-color="#fff"
@@ -49,25 +50,6 @@ export default {
             },
           ],
         },
-        {
-          title: { name: "编辑文章4", icon: "el-icon-menu", index: "1-3" },
-          items: [
-            {
-              title: { name: "第二层", icon: "", index: "1-3-1" },
-              items: [
-                {
-                  title: { name: "编辑文章2", icon: "", index: "1-3-1-1" },
-                  items: [
-                    {
-                      title: { name: "编辑文章2", icon: "", index: "1-3-1-1" },
-                      items: [],
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
       ],
     };
   },
@@ -81,6 +63,9 @@ export default {
     edit() {
       console.log("edit");
     },
+    handleSelect(e){
+      this.$emit('select',e)
+    }
   },
 };
 </script>

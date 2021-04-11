@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-05 22:21:14
- * @LastEditTime: 2021-02-21 22:19:09
+ * @LastEditTime: 2021-04-11 19:28:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\router\index.js
@@ -23,5 +23,8 @@ router.beforeEach((to,from,next)=>{
     if(to.name != 'login' && localStorage.getItem('isLogin')!='ok'){
       next({name:'login'})
     }else next()
+    window.back=function(){
+      console.log('aa');
+    }
 })
 export default router

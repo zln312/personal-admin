@@ -1,18 +1,13 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-15 14:20:49
- * @LastEditTime: 2021-02-24 21:35:17
+ * @LastEditTime: 2021-04-11 16:15:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\views\articleList\table.vue
 -->
 <template>
   <el-table :data="list" style="width: 100%" border>
-    <el-table-column label="封面" width="110">
-      <template slot-scope="scope">
-        <img :src="scope.row.cover" alt="" width="90px" />
-      </template>
-    </el-table-column>
     <el-table-column prop="title" label="标题" width="300"> </el-table-column>
     <el-table-column prop="tagName" label="标签" width="180"> </el-table-column>
     <el-table-column prop="intro" label="简介" width="300"> </el-table-column>
