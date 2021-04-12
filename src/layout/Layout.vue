@@ -1,20 +1,20 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-05 22:21:30
- * @LastEditTime: 2021-04-11 17:49:36
+ * @LastEditTime: 2021-04-12 20:27:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\layout\layout.vue
 -->
 <template>
   <div>
-    <el-row>
-      <el-col :span="4">
-        <nav-menu @select="hanldeSelect"></nav-menu>
+    <el-row type="flex">
+      <el-col :sm="4">
+        <nav-menu></nav-menu>
       </el-col>
-      <el-col :span="20">
+      <el-col :sm="20">
         <breadcrumb></breadcrumb>
-        <tabs ref='tabs'></tabs>
+        <tabs></tabs>
       </el-col>
     </el-row>
   </div>
@@ -32,12 +32,6 @@ export default {
     navMenu,
     tabs
   },
-  methods:{
-    hanldeSelect(e){
-    console.log(e)
-    this.$refs.tabs.addTab(e)
-    },
-  }
 };
 </script>
 

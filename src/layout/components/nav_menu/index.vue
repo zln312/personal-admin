@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-06 22:17:06
- * @LastEditTime: 2021-04-11 18:57:36
+ * @LastEditTime: 2021-04-12 20:27:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\layout\components\nav_menu\index.vue
@@ -12,7 +12,6 @@
     class="el-menu-vertical-demo"
     @open="handleOpen"
     @close="handleClose"
-    @select="handleSelect"
     router
     background-color="#545c64"
     text-color="#fff"
@@ -63,9 +62,6 @@ export default {
     edit() {
       console.log("edit");
     },
-    handleSelect(e){
-      this.$emit('select',e)
-    }
   },
 };
 </script>

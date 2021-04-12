@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-11 16:27:20
- * @LastEditTime: 2021-04-11 19:22:21
+ * @LastEditTime: 2021-04-12 20:26:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \personal-admin\src\components\tabs\index.vue
@@ -16,10 +16,10 @@
       @tab-click="tabClick"
     >
       <el-tab-pane
-        v-for="item in editableTabs"
-        :key="item.name"
-        :label="item.title"
-        :name="item.name"
+        v-for="item in editableTabss"
+        :key="item"
+        :label="$store.state.menuTitel[item]"
+        :name="item"
       >
       <keep-alive>
         <router-view></router-view>
@@ -33,56 +33,46 @@
  export default {
     data() {
       return {
-        editableTabsValue: '/',
         routList:['/'],
         editableTabs: [{
           title: '首页',
           name: '/',
         }],
+        editableTabss:this.$store.state.list
+      }
+    },
+    computed:{
+      editableTabsValue:{
+        get(){
+          return this.$store.state.routes
+        },
+        set(value){
+          this.$store.commit('updateRoutes',value)
+        }
       }
     },
     methods: {
-      addTab(e) {
-        console.log("editableTabs:",this.editableTabs);
-        console.log("tabs:",this.routList);
-
-        if(this.routList.indexOf(e)>-1){
-          this.editableTabsValue=e;
-          console.log('标签已经存在',e);
-          return;
-        }
-        this.routList.push(e);
-        this.editableTabs.push({
-          title: this.$store.state.menuTitel[e],
-          name: e,
-        });
-        this.editableTabsValue = e;
-      },
       removeTab(targetName) {
         if(targetName==='/') return;
-        let tabs = this.editableTabs;
+        let tabs = this.$store.state.list;
         let activeName = this.editableTabsValue;
-        tabs.forEach((tab,index)=>{
-          if(tab.name===targetName){
-              this.routList.splice(index,1)
-          }
-        })
         if (activeName === targetName) {
           tabs.forEach((tab, index) => {
-            if (tab.name === targetName) {
+            if (tab === targetName) {
+              console.log('aaaaaaa');
               let nextTab = tabs[index + 1] || tabs[index - 1];
               if (nextTab) {
-                activeName = nextTab.name;
+                activeName = nextTab;
               }
             }
           });
         }
+        this.$store.commit('delRout',targetName)
         this.$router.push(activeName)
         this.editableTabsValue = activeName;
         this.editableTabs = tabs.filter(tab => tab.name !== targetName);
       },
       tabClick(e){
-        console.log(e.name);
         this.$router.push(e.name)
       }
     },
